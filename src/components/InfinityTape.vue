@@ -3,14 +3,20 @@
     <img
       v-for="img in imgs"
       :key="img.id"
-      @click="emits('onPictureClick', img.url)"
+      @click="openedImage ? (selectedImage = img) : null"
       :src="img.url"
     />
   </div>
+  <ImageView
+    v-if="selectedImage"
+    :url="selectedImage.url"
+    @close="selectedImage = null"
+  />
 </template>
 
 <script setup>
-  import { defineEmits, defineProps } from "vue";
+  import { defineProps, ref } from "vue";
+  import ImageView from "./ImageView.vue";
 
   const props = defineProps({
     imgs: {
@@ -18,9 +24,13 @@
       required: true,
       default: () => [],
     },
+    openedImage: {
+      type: Boolean,
+      default: true,
+    },
   });
 
-  const emits = defineEmits(["onPictureClick"]);
+  const selectedImage = ref(null);
 </script>
 
 <style scoped>
@@ -32,7 +42,6 @@
   }
 
   .container {
-    margin-top: 5rem;
     column-count: 4;
     column-gap: 10px;
   }
