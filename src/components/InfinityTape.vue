@@ -16,7 +16,7 @@
 
 <script setup>
   import { defineProps, ref } from "vue";
-  import ImageView from "./ImageView.vue";
+  import ImageView from "@/components/ImageView.vue";
 
   const props = defineProps({
     imgs: {
