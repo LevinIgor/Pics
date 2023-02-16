@@ -34,14 +34,14 @@
           <li>tag3</li>
         </ul>
       </div>
-      <infinityTape :imgs="imgs" :opened-image="false" />
+      <InfinityTape :imgs="imgs" :opened-image="false" />
     </div>
   </div>
 </template>
 
 <script setup>
   import { defineProps, defineEmits, ref } from "vue";
-  import infinityTape from "./infinityTape.vue";
+  import InfinityTape from "@/components/InfinityTape.vue";
   import imgs from "@/store/imgs3.json";
 
   const props = defineProps({
